@@ -6,9 +6,9 @@ Este proyecto es el frontend de la plataforma **PetAdopt**, una aplicación web 
 
 ## Instalación y configuración
 
-Sigue estos pasos para configurar el proyecto en tu entorno local:
+Sigue estos pasos para descargar el proyecto en tu entorno local:
 
-### 1. Clona el repositorio:**
+### 1. Clona el repositorio:
 ```bash
 git clone https://github.com/yeckdemies/Proyecto_10_Frontend.git
 ```
