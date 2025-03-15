@@ -1,4 +1,4 @@
-import { hideLoader, showLoader } from '../components/Loader/Loader';
+import { showLoader } from '../components/Loader/Loader';
 
 const API_URL = 'https://proyecto-10-backend.onrender.com/api/v1/adoptions';
 const TOKEN = localStorage.getItem('token');
@@ -9,7 +9,6 @@ const HEADER = {
 
 export const fetchAdoptions = async () => {
   try {
-    showLoader();
     const response = await fetch(API_URL, {
       headers: HEADER
     });
@@ -17,8 +16,6 @@ export const fetchAdoptions = async () => {
   } catch (error) {
     console.error('Error fetching adoptions:', error);
     return [];
-  } finally {
-    hideLoader();
   }
 };
 
@@ -34,8 +31,6 @@ export const updateAdoption = async (adoptionId, newStatus) => {
   } catch (error) {
     console.error('Error updating adoption:', error);
     return false;
-  } finally {
-    hideLoader();
   }
 };
 
@@ -50,8 +45,6 @@ export const deleteAdoption = async (adoptionId) => {
   } catch (error) {
     console.error('Error deleting adoption:', error);
     return false;
-  } finally {
-    hideLoader();
   }
 };
 
@@ -72,7 +65,5 @@ export const createAdoption = async (petId) => {
   } catch (error) {
     console.error('Error al solicitar adopción:', error);
     return false;
-  } finally {
-    hideLoader();
   }
 };

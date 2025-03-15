@@ -3,6 +3,7 @@ import { registerPet } from '../../api/petsService';
 import { routes } from '../../utils/routes/routes';
 import { navigate } from '../../utils/functions/tools';
 import { ShowAlert } from '../../components/Alert/Alert';
+import { hideLoader, showLoader } from '../../components/Loader/Loader';
 
 export const RegisterPet = () => {
   const main = document.querySelector('main');
@@ -10,6 +11,7 @@ export const RegisterPet = () => {
 
   const handleSubmit = async (formData, submitButton) => {
     submitButton.disabled = true;
+    showLoader();
     try {
       const result = await registerPet(formData);
       if (result) {
@@ -24,6 +26,8 @@ export const RegisterPet = () => {
     } catch (error) {
       ShowAlert(error.message, 'error', 3000, true);
       submitButton.disabled = false;
+    } finally {
+      hideLoader();
     }
   };
 

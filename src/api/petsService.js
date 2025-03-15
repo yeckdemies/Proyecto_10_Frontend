@@ -10,7 +10,6 @@ const HEADER = {
 
 export const fetchAvailablePets = async () => {
   try {
-    showLoader();
     const response = await fetch(`${API_URL}/getAvailablePets/`, {
       headers: HEADER
     });
@@ -24,14 +23,11 @@ export const fetchAvailablePets = async () => {
   } catch (error) {
     console.error('Error fetching available pets:', error);
     return [];
-  } finally {
-    hideLoader();
   }
 };
 
 export const registerPet = async (formData) => {
   try {
-    showLoader();
     const response = await fetch(`${API_URL}/registerPet`, {
       method: 'POST',
       headers: HEADER,
@@ -42,8 +38,6 @@ export const registerPet = async (formData) => {
   } catch (error) {
     console.error('Error registrando la mascota:', error);
     throw error;
-  } finally {
-    hideLoader();
   }
 };
 
@@ -57,18 +51,16 @@ export const deletePet = async (petId) => {
       }
     });
 
+    hideLoader();
     return handleApiResponse(response);
   } catch (error) {
     console.error('Error eliminando la mascota:', error);
     throw error;
-  } finally {
-    hideLoader();
   }
 };
 
 export const getPetById = async (petId) => {
   try {
-    showLoader();
     const response = await fetch(`${API_URL}/${petId}`, {
       headers: HEADER
     });
@@ -77,14 +69,11 @@ export const getPetById = async (petId) => {
   } catch (error) {
     console.error('Error fetching pet by ID:', error);
     throw error;
-  } finally {
-    hideLoader();
   }
 };
 
 export const updatePet = async (petId, formData) => {
   try {
-    showLoader();
     const response = await fetch(`${API_URL}/editPet/${petId}`, {
       method: 'PUT',
       headers: {
@@ -97,7 +86,5 @@ export const updatePet = async (petId, formData) => {
   } catch (error) {
     console.error('Error updating pet:', error);
     throw error;
-  } finally {
-    hideLoader();
   }
 };

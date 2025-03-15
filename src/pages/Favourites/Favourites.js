@@ -1,5 +1,6 @@
 import './Favourites.css';
 import { createCard } from '../../components/Card/Card';
+import { hideLoader, showLoader } from '../../components/Loader/Loader';
 import { getUserFavourites } from '../../api/userService';
 import { PageTitle } from '../../components/PageTitle/PageTitle';
 
@@ -21,6 +22,7 @@ export const Favourites = async () => {
   ul.id = 'favourites-container';
   container.appendChild(ul);
 
+  showLoader();
   const favouritePets = await getUserFavourites();
 
   if (!favouritePets.length) {
@@ -51,5 +53,6 @@ export const Favourites = async () => {
     }
   }
 
+  hideLoader();
   main.append(container);
 };

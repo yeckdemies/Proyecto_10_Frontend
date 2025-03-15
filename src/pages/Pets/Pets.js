@@ -2,6 +2,7 @@ import './Pets.css';
 import { createCard } from '../../components/Card/Card';
 import { fetchAvailablePets } from '../../api/petsService';
 import { PageTitle } from '../../components/PageTitle/PageTitle';
+import { hideLoader, showLoader } from '../../components/Loader/Loader';
 
 const USER = JSON.parse(localStorage.getItem('user'));
 const USER_ROLE = USER?.role;
@@ -21,7 +22,11 @@ export const Pets = async () => {
   ul.id = 'petscontainer';
   container.appendChild(ul);
 
+  showLoader();
+
   const pets = await fetchAvailablePets();
+
+  hideLoader();
 
   if (!pets.length) {
     const emptyMessage = document.createElement('p');
@@ -32,7 +37,6 @@ export const Pets = async () => {
     const petsContainer = container.querySelector('#petscontainer');
     petsContainer.innerHTML = '';
 
-    // Creación paralela de tarjetas
     const cardsPromises = pets.map((pet) =>
       createCard({
         ...pet,

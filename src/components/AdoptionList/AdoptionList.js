@@ -4,6 +4,7 @@ import {
   updateAdoption
 } from '../../api/adoptionService';
 import { createCard } from '../Card/Card';
+import { showLoader, hideLoader } from '../Loader/Loader';
 import './AdoptionList.css';
 import { PageTitle } from '../PageTitle/PageTitle';
 
@@ -12,6 +13,7 @@ const USER_ROLE = USER?.role;
 const USER_ID = USER?._id;
 
 export const AdoptionList = async (filter = 'Pending') => {
+  showLoader();
   const main = document.querySelector('main');
   main.innerHTML = '';
 
@@ -47,6 +49,7 @@ export const AdoptionList = async (filter = 'Pending') => {
   container.appendChild(adoptionContainer);
 
   const adoptions = await fetchAdoptions();
+  hideLoader();
 
   if (!adoptions || !Array.isArray(adoptions)) {
     console.error('Invalid API response');
@@ -83,6 +86,7 @@ export const AdoptionList = async (filter = 'Pending') => {
       };
 
       const card = await createCard(petData);
+      hideLoader();
       const buttonContainer = document.createElement('div');
       buttonContainer.classList.add('button-container');
 
