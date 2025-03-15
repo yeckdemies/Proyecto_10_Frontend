@@ -4,7 +4,6 @@ import { navigate } from '../../utils/functions/tools';
 import { getPetById, updatePet } from '../../api/petsService';
 import { ShowAlert } from '../../components/Alert/Alert';
 import { PageTitle } from '../../components/PageTitle/PageTitle';
-import { hideLoader, showLoader } from '../../components/Loader/Loader';
 
 export const EditPet = async (petId) => {
   const main = document.querySelector('main');
@@ -21,7 +20,6 @@ export const EditPet = async (petId) => {
   }
 
   const handleSubmit = async (formData) => {
-    showLoader();
     const updated = await updatePet(petId, formData);
     if (updated) {
       ShowAlert('Mascota actualizada correctamente.', 'success', 3000, true);
@@ -36,5 +34,4 @@ export const EditPet = async (petId) => {
 
   const petForm = PetForm({ mode: 'edit', petData, onSubmit: handleSubmit });
   main.appendChild(petForm);
-  hideLoader();
 };

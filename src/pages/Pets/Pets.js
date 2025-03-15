@@ -1,6 +1,5 @@
 import './Pets.css';
 import { createCard } from '../../components/Card/Card';
-import { hideLoader, showLoader } from '../../components/Loader/Loader';
 import { fetchAvailablePets } from '../../api/petsService';
 import { PageTitle } from '../../components/PageTitle/PageTitle';
 

@@ -1,9 +1,11 @@
+import { hideLoader, showLoader } from '../components/Loader/Loader';
 import { navigate } from '../utils/functions/tools';
 import { routes } from '../utils/routes/routes';
 
 const API_URL = 'https://proyecto-10-backend.onrender.com/api/v1/users';
 
 export const addFavourite = async (petId) => {
+  showLoader();
   const token = localStorage.getItem('token');
   const USER = JSON.parse(localStorage.getItem('user'));
   if (!USER) {
@@ -28,10 +30,13 @@ export const addFavourite = async (petId) => {
   } catch (error) {
     console.error('Error en la solicitud:', error);
     return { success: false, message: 'Error en la solicitud' };
+  } finally {
+    hideLoader();
   }
 };
 
 export const removeFavourite = async (petId) => {
+  showLoader();
   const token = localStorage.getItem('token');
 
   try {
@@ -48,10 +53,13 @@ export const removeFavourite = async (petId) => {
   } catch (error) {
     console.error('Error en la solicitud:', error);
     return { success: false, message: 'Error en la solicitud' };
+  } finally {
+    hideLoader();
   }
 };
 
 export const getCurrentUser = async () => {
+  showLoader();
   const token = localStorage.getItem('token');
   if (!token) return null;
 
@@ -73,5 +81,7 @@ export const getCurrentUser = async () => {
   } catch (error) {
     console.error('Error obteniendo usuario:', error);
     return null;
+  } finally {
+    hideLoader();
   }
 };

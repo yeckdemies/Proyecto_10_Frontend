@@ -1,8 +1,10 @@
+import { hideLoader, showLoader } from '../components/Loader/Loader';
 import { cerrarFormulario } from '../utils/functions/tools';
 
 const API_URL = 'https://proyecto-10-backend.onrender.com/api/v1/users';
 
 export const submitLogin = async (userName, password, form) => {
+  showLoader();
   try {
     const objetoFinal = JSON.stringify({ userName, password });
 
@@ -17,10 +19,13 @@ export const submitLogin = async (userName, password, form) => {
   } catch (error) {
     console.error('Error en la solicitud:', error);
     return { success: false, message: 'Error en la solicitud' };
+  } finally {
+    hideLoader();
   }
 };
 
 export const submitRegister = async (userName, email, password, form) => {
+  showLoader();
   try {
     const objetoFinal = JSON.stringify({ userName, email, password });
 
@@ -42,6 +47,8 @@ export const submitRegister = async (userName, email, password, form) => {
   } catch (error) {
     console.error('Error en la solicitud:', error);
     return { success: false, message: 'Error en la solicitud' };
+  } finally {
+    hideLoader();
   }
 };
 
@@ -83,6 +90,7 @@ const handleErrorResponse = async (res, form) => {
 };
 
 export const validateUser = async () => {
+  showLoader();
   const token = localStorage.getItem('token');
   if (!token) return null;
 
@@ -103,10 +111,13 @@ export const validateUser = async () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     return null;
+  } finally {
+    hideLoader();
   }
 };
 
 export const getUserFavourites = async () => {
+  showLoader();
   const token = localStorage.getItem('token');
   if (!token) return [];
 
@@ -126,5 +137,7 @@ export const getUserFavourites = async () => {
   } catch (error) {
     console.error('Error fetching favourites:', error);
     return [];
+  } finally {
+    hideLoader();
   }
 };
