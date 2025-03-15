@@ -1,0 +1,134 @@
+#adoption-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-size);
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+#adoptions {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.filter-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  background: #f0f0f0;
+  color: #333;
+  transition: background 0.3s ease-in-out;
+}
+
+.filter-button:hover {
+  background: #ddd;
+}
+
+.active-filter {
+  background: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+.status-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.9em;
+  transition: background 0.2s ease-in-out;
+  margin: 5px;
+}
+
+.pending-btn {
+  background: #ffcc00;
+  color: #333;
+}
+
+.approved-btn {
+  background: #4caf50;
+  color: white;
+}
+
+.rejected-btn {
+  background: #f44336;
+  color: white;
+}
+
+.disabled-btn {
+  background: #ccc !important;
+  color: #666 !important;
+  cursor: not-allowed !important;
+  opacity: 0.7;
+}
+
+.cancel-adoption-btn {
+  background: #d9534f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 1.1em;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.cancel-adoption-btn:hover {
+  background: #c9302c;
+}
+
+.adoption-status {
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 5px 0;
+  text-align: center;
+}
+
+.pending-status {
+  color: #ffcc00;
+}
+
+.approved-status {
+  color: #4caf50;
+}
+
+.rejected-status {
+  color: #f44336;
+}
+
+.empty-message {
+  width: 100%;
+  text-align: center;
+  color: #999;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 50px 0;
+}
+
+@media (max-width: 768px) {
+  .filter-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #adoption-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}

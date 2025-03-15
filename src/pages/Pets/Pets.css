@@ -1,0 +1,31 @@
+:root {
+  --gap-size: 20px;
+  --max-width: 1200px;
+}
+
+li {
+  list-style: none;
+}
+
+#pets {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#petscontainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-size);
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  #petscontainer {
+    flex-direction: column;
+    align-items: center;
+  }
+}

@@ -1,0 +1,28 @@
+.favourite-btn {
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s;
+}
+
+.favourite-btn:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.favourite-btn img {
+  width: 25px;
+  transition: 0.3s;
+}
+
+.favourite-btn.active img {
+  filter: invert(24%) sepia(100%) saturate(747%) hue-rotate(341deg)
+    brightness(94%) contrast(97%);
+}

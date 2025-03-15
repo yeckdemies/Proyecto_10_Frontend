@@ -1,0 +1,96 @@
+.card {
+  position: relative;
+  width: 280px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background-color: #f0f0f0;
+  display: block;
+}
+
+.card-img::before {
+  content: 'Imagen no disponible';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: #999;
+  font-size: 14px;
+  background: #f0f0f0;
+}
+
+.favourite-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+.card-body {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-title {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.card-info {
+  font-size: 1em;
+  color: #555;
+  line-height: 1.5;
+  text-align: left;
+}
+
+#petscontainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: left;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.delete-pet-btn {
+  background: #d9534f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 1.1em;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.delete-pet-btn:hover {
+  background: #c9302c;
+}
+
+@media (max-width: 768px) {
+  #petscontainer {
+    flex-direction: column;
+    align-items: center;
+  }
+}

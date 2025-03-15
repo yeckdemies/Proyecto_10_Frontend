@@ -1,0 +1,30 @@
+.page-title-container {
+  width: 50%;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.page-title {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .page-title-container {
+    padding: 10px 15px;
+  }
+
+  .page-title {
+    font-size: 1.6em;
+  }
+}
