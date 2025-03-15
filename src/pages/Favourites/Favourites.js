@@ -37,20 +37,23 @@ export const Favourites = async () => {
     );
     favouritesContainer.innerHTML = '';
 
-    for (const pet of favouritePets) {
-      const li = document.createElement('li');
-
-      const card = await createCard({
+    const cardsPromises = favouritePets.map((pet) =>
+      createCard({
         ...pet,
         showAdoptButton: USER_ROLE !== 'admin',
         showDeleteButton: USER_ROLE === 'admin',
         showFavourite: USER_ROLE !== 'admin',
         isLoggedIn: IS_LOGGED_IN
-      });
+      })
+    );
 
+    const cards = await Promise.all(cardsPromises);
+
+    cards.forEach((card) => {
+      const li = document.createElement('li');
       li.appendChild(card);
       favouritesContainer.append(li);
-    }
+    });
   }
 
   hideLoader();
