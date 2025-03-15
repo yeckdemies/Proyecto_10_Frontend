@@ -23,10 +23,7 @@ export const Pets = async () => {
   container.appendChild(ul);
 
   showLoader();
-
   const pets = await fetchAvailablePets();
-
-  hideLoader();
 
   if (!pets.length) {
     const emptyMessage = document.createElement('p');
@@ -55,6 +52,6 @@ export const Pets = async () => {
       petsContainer.appendChild(li);
     });
   }
-
+  hideLoader();
   main.append(container);
 };
