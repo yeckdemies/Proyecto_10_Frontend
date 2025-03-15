@@ -10,6 +10,7 @@ const HEADER = {
 
 export const fetchAvailablePets = async () => {
   try {
+    showLoader();
     const response = await fetch(`${API_URL}/getAvailablePets/`, {
       headers: HEADER
     });
@@ -23,6 +24,8 @@ export const fetchAvailablePets = async () => {
   } catch (error) {
     console.error('Error fetching available pets:', error);
     return [];
+  } finally {
+    hideLoader();
   }
 };
 

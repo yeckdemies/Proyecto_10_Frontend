@@ -22,10 +22,7 @@ export const Pets = async () => {
   ul.id = 'petscontainer';
   container.appendChild(ul);
 
-  showLoader();
   const pets = await fetchAvailablePets();
-
-  hideLoader();
 
   if (!pets.length) {
     const emptyMessage = document.createElement('p');
