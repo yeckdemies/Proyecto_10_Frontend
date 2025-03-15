@@ -1,19 +1,16 @@
 import { updateAdoption, deleteAdoption } from '../../api/adoptionService';
 import { AdoptionList } from './AdoptionList';
 import './AdoptionButtons.css';
-import { hideLoader, showLoader } from '../Loader/Loader';
 
 const handleUpdate = async (adoptionId, newStatus) => {
   if (await updateAdoption(adoptionId, newStatus)) {
     AdoptionList();
-    hideLoader();
   }
 };
 
 const handleDelete = async (adoptionId) => {
   if (await deleteAdoption(adoptionId)) {
     AdoptionList();
-    hideLoader();
   }
 };
 
