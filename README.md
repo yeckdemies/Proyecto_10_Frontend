@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Este proyecto es el frontend de la plataforma **PetAdopt**, una aplicación web que facilita la adopción de mascotas. Construido con **React.js**, permite a los usuarios explorar mascotas disponibles para adopción, registrarse, iniciar sesión.
+Este proyecto es el frontend de la plataforma **PetAdopt**, una aplicación web que facilita la adopción de mascotas. Permite a los usuarios explorar mascotas disponibles para adopción, registrarse, iniciar sesión.
 
 ## Instalación y configuración
 
