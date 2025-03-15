@@ -32,20 +32,24 @@ export const Pets = async () => {
     const petsContainer = container.querySelector('#petscontainer');
     petsContainer.innerHTML = '';
 
-    for (const pet of pets) {
-      const li = document.createElement('li');
-
-      const card = await createCard({
+    // Creación paralela de tarjetas
+    const cardsPromises = pets.map((pet) =>
+      createCard({
         ...pet,
         showAdoptButton: USER_ROLE !== 'admin',
         showDeleteButton: USER_ROLE === 'admin',
         showFavourite: USER_ROLE !== 'admin',
         isLoggedIn: IS_LOGGED_IN
-      });
+      })
+    );
 
+    const cards = await Promise.all(cardsPromises);
+
+    cards.forEach((card) => {
+      const li = document.createElement('li');
       li.appendChild(card);
-      petsContainer.append(li);
-    }
+      petsContainer.appendChild(li);
+    });
   }
 
   main.append(container);
