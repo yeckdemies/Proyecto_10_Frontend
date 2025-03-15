@@ -1,6 +1,6 @@
 import { cerrarFormulario } from '../utils/functions/tools';
 
-const API_URL = 'http://localhost:3000/api/v1/users';
+const API_URL = 'https://proyecto-10-backend.onrender.com/api/v1/users';
 
 export const submitLogin = async (userName, password, form) => {
   try {

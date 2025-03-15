@@ -1,7 +1,7 @@
 import { navigate } from '../utils/functions/tools';
 import { routes } from '../utils/routes/routes';
 
-const API_URL = 'http://localhost:3000/api/v1/users';
+const API_URL = 'https://proyecto-10-backend.onrender.com/api/v1/users';
 
 export const addFavourite = async (petId) => {
   const token = localStorage.getItem('token');

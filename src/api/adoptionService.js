@@ -1,6 +1,6 @@
 import { showLoader } from '../components/Loader/Loader';
 
-const API_URL = 'http://localhost:3000/api/v1/adoptions';
+const API_URL = 'https://proyecto-10-backend.onrender.com/api/v1/adoptions';
 const TOKEN = localStorage.getItem('token');
 const HEADER = {
   Authorization: `Bearer ${TOKEN}`,

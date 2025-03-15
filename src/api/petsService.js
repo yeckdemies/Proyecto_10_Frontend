@@ -1,7 +1,7 @@
 import { hideLoader, showLoader } from '../components/Loader/Loader';
 import { handleApiResponse } from '../utils/functions/tools';
 
-const API_URL = 'http://localhost:3000/api/v1/pets';
+const API_URL = 'https://proyecto-10-backend.onrender.com/api/v1/pets';
 const TOKEN = localStorage.getItem('token');
 
 const HEADER = {
