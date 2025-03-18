@@ -1,3 +1,4 @@
+import { hideLoader, showLoader } from '../components/Loader/Loader';
 import { cerrarFormulario } from '../utils/functions/tools';
 
 const API_URL = 'https://proyecto-10-backend.onrender.com/api/v1/users';
@@ -83,6 +84,7 @@ const handleErrorResponse = async (res, form) => {
 };
 
 export const validateUser = async () => {
+  showLoader();
   const token = localStorage.getItem('token');
   if (!token) return null;
 
@@ -96,7 +98,7 @@ export const validateUser = async () => {
     });
 
     if (!response.ok) throw new Error('Token inválido');
-
+    hideLoader();
     return await response.json();
   } catch (error) {
     console.error(error);

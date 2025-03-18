@@ -4,10 +4,28 @@ import { routes } from '../../utils/routes/routes';
 import { navigate } from '../../utils/functions/tools';
 import { ShowAlert } from '../../components/Alert/Alert';
 import { hideLoader, showLoader } from '../../components/Loader/Loader';
+import { validateUser } from '../../api/userService';
 
-export const RegisterPet = () => {
+export const RegisterPet = async () => {
   const main = document.querySelector('main');
   main.innerHTML = '';
+
+  const user = await validateUser();
+
+  if (!user || user.role !== 'admin') {
+    ShowAlert(
+      'Acceso denegado. Solo los administradores pueden editar mascotas.',
+      'error',
+      3000,
+      true
+    );
+
+    navigate(
+      { preventDefault: () => {} },
+      routes.find((route) => route.name === 'Animales')
+    );
+    return;
+  }
 
   const handleSubmit = async (formData, submitButton) => {
     submitButton.disabled = true;

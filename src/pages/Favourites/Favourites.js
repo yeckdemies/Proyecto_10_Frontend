@@ -1,7 +1,7 @@
 import './Favourites.css';
 import { createCard } from '../../components/Card/Card';
 import { hideLoader, showLoader } from '../../components/Loader/Loader';
-import { getUserFavourites } from '../../api/userService';
+import { getUserFavourites, validateUser } from '../../api/userService';
 import { PageTitle } from '../../components/PageTitle/PageTitle';
 
 const USER = JSON.parse(localStorage.getItem('user'));
@@ -11,6 +11,23 @@ const IS_LOGGED_IN = USER !== null;
 export const Favourites = async () => {
   const main = document.querySelector('main');
   main.innerHTML = '';
+
+  const user = await validateUser();
+
+  if (!user || user.role !== 'user') {
+    ShowAlert(
+      'Acceso denegado. Solo los usuarios pueden ver sus favoritos.',
+      'error',
+      3000,
+      true
+    );
+
+    navigate(
+      { preventDefault: () => {} },
+      routes.find((route) => route.name === 'Animales') // Redirigir a la lista de mascotas
+    );
+    return;
+  }
 
   const titleComponent = PageTitle('Mascotas Favoritas');
   main.appendChild(titleComponent);
