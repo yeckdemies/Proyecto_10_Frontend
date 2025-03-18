@@ -100,6 +100,20 @@ nav {
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
+    background: none;
+    border: none;
+    font-size: 40px;
+    cursor: pointer;
+    color: var(--primary-color);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+    margin-bottom: 15px;
+    border-radius: 3px;
+  }
+
+  .menu-toggle:hover {
+    background: var(--hover-color);
+    color: var(--background-color);
   }
 
   .nav-menu {
@@ -108,16 +122,23 @@ nav {
     right: 0;
     background: var(--background-color);
     flex-direction: column;
-    width: 200px;
+    width: 220px;
     height: 0;
     overflow: hidden;
-    transition: height 0.3s ease-in-out;
+    transition: height 0.3s ease-in-out, padding 0.3s ease;
     z-index: 100;
-    padding: 0 20px;
+    padding: 0;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    border-radius: 5px;
   }
 
   .nav-menu.open {
-    height: 200px;
+    height: auto;
+    padding: 15px;
+  }
+
+  .nav-menu li {
+    padding: 10px 0;
   }
 
   .user-container {
@@ -130,6 +151,20 @@ nav {
   }
 
   .logout-button {
-    font-size: 10px;
+    font-size: 16px;
+    padding: 12px 20px;
+    background: var(--primary-color);
+    color: var(--background-color);
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+  }
+  .logout-button:hover {
+    background: var(--primary-color);
+    color: var(--background-color);
+    transform: scale(1.05);
+    border: 1px solid var(--primary-color);
   }
 }

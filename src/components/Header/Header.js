@@ -21,8 +21,21 @@ export const Header = async () => {
   button.setAttribute('aria-label', 'Toggle Menu');
   button.textContent = '☰';
   nav.appendChild(button);
-  button.addEventListener('click', () => {
+  button.addEventListener('click', (event) => {
+    event.stopPropagation();
     ul.classList.toggle('open');
+
+    if (ul.classList.contains('open')) {
+      setTimeout(() => {
+        ul.classList.remove('open');
+      }, 2000);
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!ul.contains(event.target) && !button.contains(event.target)) {
+      ul.classList.remove('open');
+    }
   });
 
   logo.className = 'logo';
